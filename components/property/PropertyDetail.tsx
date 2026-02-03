@@ -1,10 +1,12 @@
 import { PropertyProps } from "@/interfaces";
+import ReviewSection from "./ReviewSection";
 
 interface PropertyDetailProps {
   property: PropertyProps;
+  propertyId?: number;
 }
 
-const PropertyDetail = ({ property }: PropertyDetailProps) => {
+const PropertyDetail = ({ property, propertyId = 0 }: PropertyDetailProps) => {
   return (
     <div className="max-w-5xl mx-auto p-6">
       {/* Image Section */}
@@ -63,6 +65,11 @@ const PropertyDetail = ({ property }: PropertyDetailProps) => {
                 <p className="text-2xl font-bold">{property.offers.occupants}</p>
               </div>
             </div>
+          </div>
+
+          {/* Reviews Section */}
+          <div className="mt-12 border-t pt-8">
+            <ReviewSection propertyId={propertyId} />
           </div>
         </div>
 

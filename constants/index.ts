@@ -1,4 +1,4 @@
-import { PropertyProps } from "@/interfaces";
+import { PropertyProps, ReviewProps } from "@/interfaces";
 export const PROPERTYLISTINGSAMPLE: PropertyProps []  =  [
   {
     name: "Villa Ocean Breeze",
@@ -361,3 +361,79 @@ export const PROPERTYLISTINGSAMPLE: PropertyProps []  =  [
     discount: 30
   }
 ];
+
+// Sample reviews data for properties
+export const REVIEWS_SAMPLE: { [key: number]: ReviewProps[] } = {
+  0: [
+    {
+      id: 1,
+      author: "Sarah Johnson",
+      rating: 5,
+      comment: "Amazing villa with stunning ocean views! The staff was incredibly helpful and the property was immaculate.",
+      date: "2024-08-15",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah"
+    },
+    {
+      id: 2,
+      author: "Michael Chen",
+      rating: 4,
+      comment: "Beautiful property, very clean and well-maintained. The pool area is fantastic. Would definitely recommend!",
+      date: "2024-07-20",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael"
+    },
+    {
+      id: 3,
+      author: "Emma Wilson",
+      rating: 5,
+      comment: "Our family had the best vacation here. The views are breathtaking and the property has everything you need.",
+      date: "2024-06-10",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Emma"
+    }
+  ],
+  1: [
+    {
+      id: 1,
+      author: "David Brown",
+      rating: 4,
+      comment: "Great mountain views and perfect for skiing. The fireplace made our stay cozy during winter.",
+      date: "2024-02-14",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=David"
+    },
+    {
+      id: 2,
+      author: "Lisa Anderson",
+      rating: 5,
+      comment: "Absolutely perfect for our family getaway. Great amenities and wonderful hosts!",
+      date: "2024-01-20",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Lisa"
+    }
+  ],
+  2: [
+    {
+      id: 1,
+      author: "James Martinez",
+      rating: 5,
+      comment: "Peaceful desert retreat. Perfect for relaxation and stargazing at night.",
+      date: "2024-05-08",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=James"
+    }
+  ],
+  3: [
+    {
+      id: 1,
+      author: "Rachel Green",
+      rating: 5,
+      comment: "Spectacular penthouse with amazing city views! Right in the heart of NYC.",
+      date: "2024-08-01",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rachel"
+    },
+    {
+      id: 2,
+      author: "John Smith",
+      rating: 4,
+      comment: "Modern apartment, great location, perfect for business travelers.",
+      date: "2024-07-15",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=John"
+    }
+  ]
+};

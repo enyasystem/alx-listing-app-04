@@ -76,7 +76,7 @@ export default function PropertyDetailPage() {
         <title>{property.name} - ALX Listing App</title>
         <meta name="description" content={`Details for ${property.name}`} />
       </Head>
-      <PropertyDetail property={property} />
+      <PropertyDetail property={property} propertyId={parseInt(id as string)} />
     </>
   );
 }
