@@ -1,10 +1,36 @@
 import Head from "next/head";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import Card from "../components/common/Card";
 import Button from "../components/common/Button";
 import { PROPERTYLISTINGSAMPLE } from "../constants";
 import { PropertyProps } from "../interfaces";
 
 export default function Home() {
+  const [properties, setProperties] = useState<PropertyProps[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchProperties = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await axios.get("/api/properties");
+        setProperties(response.data);
+      } catch (err) {
+        console.error("Error fetching properties:", err);
+        setError("Failed to fetch properties. Using sample data.");
+        // Fallback to sample data on error
+        setProperties(PROPERTYLISTINGSAMPLE);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProperties();
+  }, []);
+
   return (
     <>
       <Head>
@@ -35,21 +61,38 @@ export default function Home() {
           )}
         </section>
 
-        {/* Listings */}
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {PROPERTYLISTINGSAMPLE.map(
-            ({ name, offers, price, rating, image }: PropertyProps, index) => (
-              <Card
-                key={index}
-                title={name}
-                description={`${offers.bed} beds · ${offers.shower} baths`}
-                image={image}
-                price={price}
-                rating={rating}
-              />
-            )
-          )}
-        </section>
+        {/* Error Message */}
+        {error && (
+          <section className="mb-6 p-4 bg-yellow-100 border border-yellow-400 text-yellow-800 rounded-lg">
+            {error}
+          </section>
+        )}
+
+        {/* Loading State */}
+        {loading ? (
+          <section className="flex justify-center items-center py-12">
+            <div className="text-center">
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+              <p className="mt-4 text-gray-600 text-lg">Loading properties...</p>
+            </div>
+          </section>
+        ) : (
+          /* Listings */
+          <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {properties.map(
+              ({ name, offers, price, rating, image }: PropertyProps, index) => (
+                <Card
+                  key={index}
+                  title={name}
+                  description={`${offers.bed} beds · ${offers.shower} baths`}
+                  image={image}
+                  price={price}
+                  rating={rating}
+                />
+              )
+            )}
+          </section>
+        )}
       </main>
     </>
   );
