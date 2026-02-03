@@ -82,8 +82,7 @@ export default function Home() {
             {properties.map(
               ({ name, offers, price, rating, image }: PropertyProps, index) => (
                 <Card
-                  key={index}
-                  title={name}
+                  key={index}                  id={index}                  title={name}
                   description={`${offers.bed} beds · ${offers.shower} baths`}
                   image={image}
                   price={price}

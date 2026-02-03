@@ -1,14 +1,17 @@
+import Link from "next/link";
+
 interface CardProps {
   title: string;
   description: string;
   image?: string;
   price?: number;
   rating?: number;
+  id?: number;
 }
 
-const Card = ({ title, description, image, price, rating }: CardProps) => {
-  return (
-    <div className="border rounded-lg overflow-hidden">
+const Card = ({ title, description, image, price, rating, id }: CardProps) => {
+  const cardContent = (
+    <div className="border rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer h-full">
       {image && (
         <img
           src={image}
@@ -29,6 +32,12 @@ const Card = ({ title, description, image, price, rating }: CardProps) => {
       </div>
     </div>
   );
+
+  if (id !== undefined) {
+    return <Link href={`/property/${id}`}>{cardContent}</Link>;
+  }
+
+  return cardContent;
 };
 
 export default Card;
