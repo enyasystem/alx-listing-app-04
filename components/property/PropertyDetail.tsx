@@ -1,3 +1,5 @@
+'use client';
+
 import { PropertyProps } from "@/interfaces";
 import ReviewSection from "./ReviewSection";
 
